@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">440Tut2ComposeMorseCode</string>
+    <string name="dotButtonText">Dot</string>
+    <string name="dashButtonText">Dash</string>
+</resources>
