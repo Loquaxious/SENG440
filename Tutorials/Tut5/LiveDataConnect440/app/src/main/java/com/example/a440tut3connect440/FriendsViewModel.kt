@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class FriendsViewModel: ViewModel() {
+
     private var _friends = MutableLiveData<MutableList<Friend>>(arrayListOf(
         Friend(
             "Ben Adams",
@@ -30,6 +31,7 @@ class FriendsViewModel: ViewModel() {
     ))
     val friends: LiveData<MutableList<Friend>>
         get() = _friends
+
 
     private var _numFriends = MutableLiveData<Int>(friends.value!!.size)
     val numFriends: LiveData<Int>

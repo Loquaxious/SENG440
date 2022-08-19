@@ -7,11 +7,12 @@ import android.view.ViewParent
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FriendAdapter(private val friends: Array<Friend>, private val onFriendListener: OnFriendListener)
-    : RecyclerView.Adapter<FriendAdapter.FriendViewHolder>(){
+class FriendsAdapter(private var friends: List<Friend>, private val onFriendListener: OnFriendListener)
+    : RecyclerView.Adapter<FriendsAdapter.FriendViewHolder>() {
 
     class FriendViewHolder(itemView: View, val onFriendListener: OnFriendListener)
         : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+
         val textView: TextView
 
         init {
@@ -30,14 +31,18 @@ class FriendAdapter(private val friends: Array<Friend>, private val onFriendList
         return FriendViewHolder(view, onFriendListener)
     }
 
-    override fun getItemCount() = friends.size
-
     override fun onBindViewHolder(viewHolder: FriendViewHolder, position: Int) {
         viewHolder.textView.text = friends[position].toString()
+    }
+
+    override fun getItemCount() = friends.size
+
+    fun setData(newFriends: List<Friend>) {
+        friends = newFriends
+        notifyDataSetChanged()
     }
 
     interface OnFriendListener {
         fun onFriendClick(position: Int)
     }
-
 }

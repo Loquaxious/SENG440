@@ -3,11 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/dialof_add_friend.xml" value="0.3541666666666667" />
-        <entry key="app/src/main/res/layout/fragment_entry.xml" value="0.35520833333333335" />
-        <entry key="app/src/main/res/layout/fragment_friend_view.xml" value="0.35520833333333335" />
-        <entry key="app/src/main/res/layout/friend_layout.xml" value="0.35520833333333335" />
-        <entry key="app/src/main/res/layout/main.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.35520833333333335" />
+        <entry key="app/src/main/res/layout/failed_form.xml" value="0.3541666666666667" />
       </map>
     </option>
   </component>

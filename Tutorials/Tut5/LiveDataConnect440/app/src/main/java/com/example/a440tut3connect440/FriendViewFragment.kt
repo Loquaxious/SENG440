@@ -1,59 +1,84 @@
 package com.example.a440tut3connect440
 
+import android.app.AlertDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.RecyclerView
+import java.net.URLEncoder
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
  * Use the [FriendViewFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FriendViewFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+class FriendViewFragment : Fragment(), FriendsAdapter.OnFriendListener {
+    private val viewModel: FriendsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_friend_view, container, false)
+        val view = inflater.inflate(R.layout.fragment_friend_view, container, false)
+
+        val friendAdapter = FriendsAdapter(viewModel.friends.value!!,this)
+        viewModel.friends.observe(viewLifecycleOwner, { newFriends ->
+            friendAdapter.setData(newFriends)
+        })
+
+        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_view)
+        recyclerView.adapter = friendAdapter
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment FriendViewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            FriendViewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onFriendClick(position: Int) {
+        val options = arrayOf("Map", "Email", "Text", "Call", "Slack")
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Connect how?")
+        builder.setItems(options) { _, optionId ->
+            dispatchAction(optionId, viewModel.friends.value!![position])
+        }
+        builder.show()
     }
+
+    fun dispatchAction(optionId: Int, friend: Friend) {
+        when (optionId) {
+            0 -> {
+                val uri = Uri.parse("geo:0,0?q=${URLEncoder.encode(friend.home, "UTF-8")}")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+            1 -> {
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "text/plain"
+                intent.putExtra(Intent.EXTRA_EMAIL, friend.email)
+                startActivity(intent)
+            }
+            2 -> {
+                val uri = Uri.parse("smsto:${friend.phone}")
+                val intent = Intent(Intent.ACTION_SENDTO, uri)
+                startActivity(intent)
+            }
+            3 -> {
+                val uri = Uri.parse("tel:${friend.phone}")
+                val intent = Intent(Intent.ACTION_DIAL, uri)
+                //val intent = Intent(Intent.ACTION_CALL, uri)
+                startActivity(intent)
+            }
+            4 -> {
+                val uri = Uri.parse("slack://user?team=TR8N4694&id=${friend.slackId}")
+                val intent = Intent(Intent.ACTION_VIEW, uri)
+                startActivity(intent)
+            }
+        }
+    }
+
 }
