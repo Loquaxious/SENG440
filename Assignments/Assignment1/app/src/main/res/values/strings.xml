@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MeTrade</string>
+    <string name="BASE_URL">https://seng365.csse.canterbury.ac.nz/api/v1/</string>
 </resources>

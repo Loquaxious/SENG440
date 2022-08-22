@@ -4,7 +4,6 @@ package com.example.metrade
 class Auction (
     val auctionId: Int,
     val title: String,
-    val description: String,
     val endDate: String,
     val categoryId: Int,
     val reserve: Int,
