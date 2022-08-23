@@ -3,6 +3,8 @@ package com.example.metrade
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
@@ -14,6 +16,7 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
     private var auctions : List<ListAuction> = listOf()
     private lateinit var recyclerView: RecyclerView
     private lateinit var auctionAdapter: AuctionAdapter
+//    private lateinit var sortButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +24,18 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
 
         getAuctions()
 
+//        sortButton = findViewById(R.id.sortButton)
+//        sortButton.setOnClickListener {
+//            val builder = AlertDialog.Builder(this)
+//            builder.setTitle("Sort/Filter Auctions")
+//
+//        }
+
         auctionAdapter = AuctionAdapter(auctions, this)
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView.adapter = auctionAdapter
     }
+
 
     private fun getAuctions() {
         lifecycleScope.launch {
@@ -42,9 +53,11 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
         }
     }
 
+
     override fun onAuctionClick(position: Int) {
         val intent = Intent(this, AuctionActivity::class.java)
-        intent.putExtra("auctionId", position)
+        intent.putExtra("auctionId", auctions[position].auctionId)
         startActivity(intent)
     }
+
 }

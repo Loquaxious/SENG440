@@ -28,5 +28,6 @@ suspend fun getJson(url: URL): JSONObject {
             connection.disconnect()
         }
     }
+    println(result)
     return result
 }

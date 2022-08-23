@@ -32,26 +32,44 @@
                 android:layout_weight="1"
                 android:text="Title"
                 android:textSize="34sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:paddingLeft="10dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/auctionEndDate"
-                    android:layout_width="210dp"
+                    android:id="@+id/endDate_header"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="endDate" />
+                    android:text="TextView" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/auctionEndDate"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="10dp"
+                        android:text="endDate" />
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/addCalendar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:paddingRight="10dp"
                     android:text="Add to Calendar" />
 
             </LinearLayout>
@@ -70,14 +88,9 @@
                     android:text="$ Current Bid"
                     android:textAlignment="center"
                     android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"/>
 
-                <Button
-                    android:id="@+id/placeBid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Place bid" />
             </LinearLayout>
 
             <TextView
@@ -85,14 +98,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Reserve" />
+                android:text="Reserve"
+                android:paddingLeft="10dp"/>
 
             <TextView
                 android:id="@+id/auctionNumBids"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Number of Bids" />
+                android:text="Number of Bids"
+                android:paddingLeft="10dp"/>
 
             <TextView
                 android:id="@+id/auctionDescription"
@@ -100,14 +115,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Description"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:paddingLeft="10dp"/>
 
             <TextView
                 android:id="@+id/sellerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Seller Name" />
+                android:text="Seller Name"
+                android:paddingLeft="10dp"/>
 
         </LinearLayout>
     </ScrollView>
