@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">MeTrade</string>
-    <string name="endDate_header">Closes: </string>
-    <string name="reserve_header">Reserve: </string>
-    <string name="currentBid_header">Current Bid: </string>
-    <string name="description_header">Description: </string>
-    <string name="numBids_header">Number of Bids: </string>
-    <string name="seller_header">Seller: </string>
+    <string name="endDate_header">Closes:</string>
+    <string name="reserve_header">Reserve:</string>
+    <string name="currentBid_header">Current Bid:</string>
+    <string name="description_header">Description:</string>
+    <string name="numBids_header">Number of Bids:</string>
+    <string name="seller_header">Seller:</string>
+    <string name="button_addCalendar">Add to calendar</string>
 </resources>

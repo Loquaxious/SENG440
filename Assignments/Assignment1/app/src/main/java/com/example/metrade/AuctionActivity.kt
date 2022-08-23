@@ -2,6 +2,7 @@ package com.example.metrade
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Lifecycle
@@ -48,6 +49,15 @@ class AuctionActivity() : AppCompatActivity() {
         auctionCurrentBid = findViewById(R.id.auctionCurrentBid)
         sellerName = findViewById(R.id.sellerName)
 
+        findViewById<TextView>(R.id.header_endDate).text = R.string.endDate_header.toString()
+        findViewById<TextView>(R.id.header_currentBid).text = R.string.currentBid_header.toString()
+        findViewById<TextView>(R.id.header_reserve).text = R.string.reserve_header.toString()
+        findViewById<TextView>(R.id.header_numBids).text = R.string.numBids_header.toString()
+        findViewById<TextView>(R.id.header_description).text = R.string.description_header.toString()
+        findViewById<TextView>(R.id.header_seller).text = R.string.seller_header.toString()
+        findViewById<Button>(R.id.addCalendar).text = R.string.button_addCalendar.toString()
+
+        // TODO Button listener and intent for calendar
     }
 
     private fun getAuction() {
