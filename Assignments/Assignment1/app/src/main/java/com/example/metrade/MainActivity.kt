@@ -1,5 +1,6 @@
 package com.example.metrade
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
@@ -10,7 +11,7 @@ import java.net.URL
 const val BASE_URL = "https://seng365.csse.canterbury.ac.nz/api/v1/"
 
 class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
-    private var auctions : List<Auction> = listOf()
+    private var auctions : List<ListAuction> = listOf()
     private lateinit var recyclerView: RecyclerView
     private lateinit var auctionAdapter: AuctionAdapter
 
@@ -19,8 +20,6 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
         setContentView(R.layout.activity_main)
 
         getAuctions()
-
-        println(auctions)
 
         auctionAdapter = AuctionAdapter(auctions, this)
         recyclerView = findViewById(R.id.recycler_view)
@@ -33,7 +32,7 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
             val jsonAuctions = result.getJSONArray("auctions")
             auctions = (0 until jsonAuctions.length()).map { i ->
                 val auction = jsonAuctions.getJSONObject(i)
-                Auction(auction.getInt("auctionId"), auction.getString("title"),
+                ListAuction(auction.getInt("auctionId"), auction.getString("title"),
                     auction.getString("endDate"), auction.getInt("categoryId"), auction.optInt("reserve", 0),
                     auction.getInt("sellerId"), auction.getString("sellerFirstName"),
                     auction.getString("sellerLastName"), auction.optInt("numBids", 0),
@@ -44,6 +43,8 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
     }
 
     override fun onAuctionClick(position: Int) {
-        TODO("Not yet implemented. Go to single auction view")
+        val intent = Intent(this, AuctionActivity::class.java)
+        intent.putExtra("auctionId", position)
+        startActivity(intent)
     }
 }

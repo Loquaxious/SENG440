@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class AuctionAdapter(private var auctions: List<Auction>, private val onAuctionListener: OnAuctionListener)
+class AuctionAdapter(private var auctions: List<ListAuction>, private val onAuctionListener: OnAuctionListener)
     : RecyclerView.Adapter<AuctionAdapter.AuctionViewHolder>() {
 
     class AuctionViewHolder(itemView: View, val onAuctionListener: OnAuctionListener)
@@ -44,7 +44,7 @@ class AuctionAdapter(private var auctions: List<Auction>, private val onAuctionL
 
     override fun getItemCount() = auctions.size
 
-    fun setAuctions(newAuctions: List<Auction>) {
+    fun setAuctions(newAuctions: List<ListAuction>) {
         auctions = newAuctions
         notifyDataSetChanged()
     }

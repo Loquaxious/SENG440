@@ -1,9 +1,9 @@
 package com.example.metrade
 
-data class Auction (
+
+data class ListAuction (
     val auctionId: Int,
     val title: String,
-    val description: String,
     val endDate: String,
     val categoryId: Int,
     val reserve: Int,
@@ -12,4 +12,4 @@ data class Auction (
     val sellerLastName: String,
     val numBids: Int,
     val highestBid: Int,
-)
+        )
