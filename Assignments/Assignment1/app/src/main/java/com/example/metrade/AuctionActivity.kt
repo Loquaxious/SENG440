@@ -1,14 +1,14 @@
 package com.example.metrade
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import org.w3c.dom.Text
@@ -31,6 +31,7 @@ class AuctionActivity() : AppCompatActivity() {
     private lateinit var sellerName: TextView
     private lateinit var auctionNumBids: TextView
     private lateinit var auctionCurrentBid: TextView
+    private lateinit var dateEndDate: Date
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,16 +49,17 @@ class AuctionActivity() : AppCompatActivity() {
         auctionNumBids = findViewById(R.id.auctionNumBids)
         auctionCurrentBid = findViewById(R.id.auctionCurrentBid)
         sellerName = findViewById(R.id.sellerName)
+        val calendarButton = findViewById<Button>(R.id.addCalendar)
 
-        findViewById<TextView>(R.id.header_endDate).text = R.string.endDate_header.toString()
-        findViewById<TextView>(R.id.header_currentBid).text = R.string.currentBid_header.toString()
-        findViewById<TextView>(R.id.header_reserve).text = R.string.reserve_header.toString()
-        findViewById<TextView>(R.id.header_numBids).text = R.string.numBids_header.toString()
-        findViewById<TextView>(R.id.header_description).text = R.string.description_header.toString()
-        findViewById<TextView>(R.id.header_seller).text = R.string.seller_header.toString()
-        findViewById<Button>(R.id.addCalendar).text = R.string.button_addCalendar.toString()
-
-        // TODO Button listener and intent for calendar
+        calendarButton.setOnClickListener() {
+            val intent = Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, auction.endDate)
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, auction.endDate)
+                .putExtra(CalendarContract.Events.TITLE, getString(R.string.auctionEnds_header) + " " + auction.title)
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE)
+            startActivity(intent)
+        }
     }
 
     private fun getAuction() {
@@ -74,13 +76,13 @@ class AuctionActivity() : AppCompatActivity() {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
             val outputFormat = SimpleDateFormat("dd/MM/yyyy HH:mm a", Locale.getDefault())
 
-            val inputDate = inputFormat.parse(auction.endDate)
-            val endDateTime = outputFormat.format(inputDate)
+            dateEndDate = inputFormat.parse(auction.endDate)
+            val endDate = outputFormat.format(dateEndDate)
 
             Picasso.get().load(BASE_URL + "auctions/${auctionId}/image").into(auctionImage)
             auctionTitle.text = auction.title
             auctionDescription.text = auction.description
-            auctionEndDate.text = endDateTime.toString()
+            auctionEndDate.text = endDate.toString()
             auctionReserve.text = "$" + auction.reserve
             auctionNumBids.text = auction.numBids.toString()
             auctionCurrentBid.text = "$" + auction.highestBid

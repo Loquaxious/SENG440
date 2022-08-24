@@ -7,4 +7,5 @@
     <string name="numBids_header">Number of Bids:</string>
     <string name="seller_header">Seller:</string>
     <string name="button_addCalendar">Add to calendar</string>
+    <string name="auctionEnds_header">Auction Ends:</string>
 </resources>

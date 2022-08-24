@@ -52,7 +52,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Closes:"
+                        android:text="@string/endDate_header"
                         android:textSize="12sp"
                         android:textStyle="italic"
                         android:paddingLeft="10dp"/>
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:paddingRight="10dp"
-                    android:text="Add to Calendar"
+                    android:text="@string/button_addCalendar"
                     android:textSize="10sp" />
 
             </LinearLayout>
@@ -95,7 +95,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Current Bid:"
+                        android:text="@string/currentBid_header"
                         android:textSize="12sp"
                         android:textStyle="italic"
                         android:paddingLeft="10dp"/>
@@ -123,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Reserve:"
+                        android:text="@string/reserve_header"
                         android:textSize="12sp"
                         android:textStyle="italic"
                         android:paddingLeft="10dp"/>
@@ -141,7 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Number of Bids:"
+                        android:text="@string/numBids_header"
                         android:textSize="12sp"
                         android:textStyle="italic"
                         android:paddingLeft="10dp"/>
@@ -162,7 +162,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Description:"
+                android:text="@string/description_header"
                 android:textSize="12sp"
                 android:textStyle="italic"
                 android:paddingLeft="10dp"/>
@@ -183,7 +183,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="10dp"
                 android:paddingTop="15dp"
-                android:text="Seller:"
+                android:text="@string/seller_header"
                 android:textSize="12sp"
                 android:textStyle="italic" />
 
