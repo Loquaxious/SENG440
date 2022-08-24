@@ -3,6 +3,8 @@ package com.example.metrade
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
@@ -35,6 +37,7 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
         auctionAdapter = AuctionAdapter(auctions, this)
         recyclerView = findViewById(R.id.recycler_view)
         recyclerView.adapter = auctionAdapter
+
     }
 
 
@@ -60,5 +63,7 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
         intent.putExtra("auctionId", auctions[position].auctionId)
         startActivity(intent)
     }
+
+
 
 }
