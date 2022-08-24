@@ -8,4 +8,48 @@
     <string name="seller_header">Seller:</string>
     <string name="button_addCalendar">Add to calendar</string>
     <string name="auctionEnds_header">Auction Ends:</string>
+    <string name="search_header">Search:</string>
+    <string name="category_header">Categories:</string>
+    <string name="sortBy_header">Sort By:</string>
+    <string name="submit_button">Submit</string>
+    <string-array
+        name="array_sort_options">
+        <item>Alphabetically (A to Z)</item>
+        <item>Alphabetically (Z to A)</item>
+        <item>Current bid (lowest to highest)</item>
+        <item>Current bid (highest to lowest)</item>
+        <item>Reserve price (lowest to highest)</item>
+        <item>Reserve price (highest to lowest)</item>
+        <item>Closing Date (last to first)</item>
+        <item>Closing Date (first to last)</item>
+    </string-array>
+    <string-array
+        name="array_categories">
+        <item>All</item>
+        <item>Smartphones</item>
+        <item>Computers and Laptops</item>
+        <item>Books</item>
+        <item>CDs</item>
+        <item>DVDs</item>
+        <item>Motorbikes</item>
+        <item>Bicycles</item>
+        <item>Farm Equipment</item>
+        <item>Jewellery</item>
+        <item>Homeware</item>
+        <item>Furniture</item>
+        <item>Watches</item>
+        <item>Instruments</item>
+        <item>Electronics</item>
+        <item>Office Equipment</item>
+        <item>Tablets</item>
+        <item>Paintings and Sculptures</item>
+        <item>Bulk Items</item>
+        <item>Gaming Consoles</item>
+        <item>Hair Care</item>
+        <item>Perfume</item>
+        <item>Clothing</item>
+        <item>Lego</item>
+        <item>Figurines</item>
+        <item>Cars</item>
+    </string-array>
 </resources>

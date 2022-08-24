@@ -52,10 +52,17 @@ class AuctionActivity() : AppCompatActivity() {
         val calendarButton = findViewById<Button>(R.id.addCalendar)
 
         calendarButton.setOnClickListener() {
+            val date_endDate = LocalDateTime.parse(auction.endDate.removeRange(auction.endDate.length - 5, auction.endDate.length))
+
+            val startMillis: Long = Calendar.getInstance().run {
+                set(date_endDate.year, date_endDate.monthValue, date_endDate.dayOfMonth, date_endDate.hour, date_endDate.minute)
+                timeInMillis
+            }
+
             val intent = Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, auction.endDate)
-                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, auction.endDate)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startMillis)
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, startMillis)
                 .putExtra(CalendarContract.Events.TITLE, getString(R.string.auctionEnds_header) + " " + auction.title)
                 .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE)
             startActivity(intent)

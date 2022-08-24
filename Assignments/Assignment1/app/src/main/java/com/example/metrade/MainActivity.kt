@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.launch
 import java.net.URL
 
@@ -16,7 +17,7 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
     private var auctions : List<ListAuction> = listOf()
     private lateinit var recyclerView: RecyclerView
     private lateinit var auctionAdapter: AuctionAdapter
-//    private lateinit var sortButton: Button
+    private lateinit var sortButton: FloatingActionButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +25,12 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
 
         getAuctions()
 
-//        sortButton = findViewById(R.id.sortButton)
-//        sortButton.setOnClickListener {
-//            val builder = AlertDialog.Builder(this)
-//            builder.setTitle("Sort/Filter Auctions")
-//
-//        }
+        sortButton = findViewById(R.id.sortButton)
+        sortButton.setOnClickListener {
+            val intent = Intent(this, SortFilterActivity::class.java)
+            startActivity(intent)
+
+        }
 
         auctionAdapter = AuctionAdapter(auctions, this)
         recyclerView = findViewById(R.id.recycler_view)
