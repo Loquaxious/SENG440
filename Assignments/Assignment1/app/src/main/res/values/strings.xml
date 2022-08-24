@@ -52,4 +52,5 @@
         <item>Figurines</item>
         <item>Cars</item>
     </string-array>
+    <string name="toast_filtered_message">Applied filters and sorting</string>
 </resources>
