@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MeTrade</string>
+    <string name="app_name" translatable="false">MeTrade</string>
     <string name="endDate_header">Closes:</string>
     <string name="reserve_header">Reserve:</string>
     <string name="currentBid_header">Current Bid:</string>
@@ -12,6 +12,7 @@
     <string name="category_header">Categories:</string>
     <string name="sortBy_header">Sort By:</string>
     <string name="submit_button">Submit</string>
+    <string name="toast_filtered_message">Applied filters and sorting</string>
     <string-array
         name="array_sort_options">
         <item>Alphabetically (A to Z)</item>
@@ -52,5 +53,4 @@
         <item>Figurines</item>
         <item>Cars</item>
     </string-array>
-    <string name="toast_filtered_message">Applied filters and sorting</string>
 </resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="endDate_header">締め日:</string>
+    <string name="reserve_header">最低価格:</string>
+    <string name="currentBid_header">現在の入札価格:</string>
+    <string name="description_header">説明:</string>
+    <string name="numBids_header">入札数:</string>
+    <string name="seller_header">売り手:</string>
+    <string name="button_addCalendar">予定表に追加する</string>
+    <string name="auctionEnds_header">オークション終了:</string>
+    <string name="search_header">捜索:</string>
+    <string name="category_header">カテゴリ:</string>
+    <string name="sortBy_header">順:</string>
+    <string name="submit_button">送信</string>
+    <string name="toast_filtered_message">適用されたフィルターと並べ替え</string>
+    <string-array
+        name="array_sort_options">
+        <item>アルファベット順 (A から Z)</item>
+        <item>アルファベット順 (Z から A)</item>
+        <item>現在の入札単価(最低から最高)</item>
+        <item>現在の入札単価(最高入札額から最低値)</item>
+        <item>最低価格(最低から最高)</item>
+        <item>最低価格(最高値から最低値まで)</item>
+        <item>締め切り日(最後から最初)</item>
+        <item>締め切り日(最初から最後)</item>
+    </string-array>
+    <string-array
+        name="array_categories">
+        <item>全て</item>
+        <item>スマートフォン</item>
+        <item>コンピュータとラップトップ</item>
+        <item>本を</item>
+        <item>CDs</item>
+        <item>DVDs</item>
+        <item>バイク</item>
+        <item>自転車</item>
+        <item>農機具</item>
+        <item>ジュエリー</item>
+        <item>家庭用品</item>
+        <item>家具</item>
+        <item>時計</item>
+        <item>楽器</item>
+        <item>電子工学</item>
+        <item>オフィス機器</item>
+        <item>錠剤</item>
+        <item>絵画と彫刻</item>
+        <item>バルクアイテム</item>
+        <item>ゲーム機</item>
+        <item>ヘアケア</item>
+        <item>香水</item>
+        <item>衣類</item>
+        <item>レゴ</item>
+        <item>人形</item>
+        <item>車</item>
+    </string-array>
+</resources>

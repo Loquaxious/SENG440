@@ -1,6 +1,7 @@
 package com.example.metrade
 
 import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -63,7 +64,9 @@ class LandingActivity : AppCompatActivity(), AuctionAdapter.OnAuctionListener {
     override fun onAuctionClick(position: Int) {
         val intent = Intent(this, AuctionActivity::class.java)
         intent.putExtra("auctionId", auctions[position].auctionId)
-        startActivity(intent)
+        val options = ActivityOptions
+            .makeSceneTransitionAnimation(this)
+        startActivity(intent, options.toBundle())
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

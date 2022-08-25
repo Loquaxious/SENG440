@@ -1,15 +1,22 @@
 package com.example.metrade
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.JsonReader
+import android.util.JsonWriter
 import android.view.View
 import android.widget.*
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.InputStreamReader
+import java.io.OutputStreamWriter
 import java.util.*
 
 private lateinit var categories: Spinner
-private lateinit var searchQuery: SearchView
+private lateinit var searchQuery: EditText
 private lateinit var sortBy: Spinner
 private lateinit var submitButton: Button
 
@@ -81,11 +88,50 @@ class SortFilterActivity : AppCompatActivity() {
 
         submitButton.setOnClickListener {
             val result = Intent()
-            result.putExtra("query", searchQuery.query.toString())
+            result.putExtra("query", searchQuery.text.toString())
             result.putExtra("category", selectedCategory)
             result.putExtra("sort", selectedSortBy)
             setResult(Activity.RESULT_OK, result)
             finish()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        try{
+            val file = openFileInput("sortState.json")
+            val reader = JsonReader(InputStreamReader(file))
+            reader.beginObject()
+            while(reader.hasNext()) {
+                val key = reader.nextName()
+                when(key) {
+                    "query" -> searchQuery.setText(reader.nextString())
+                    "category" -> categories.setSelection(reader.nextInt())
+                    "sortBy" -> sortBy.setSelection(reader.nextInt())
+                }
+            }
+            reader.endObject()
+            reader.close()
+        } catch (e: FileNotFoundException) {
+            println("FILE READ FAILURE")
+            return
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        val file = openFileOutput("sortState.json", Context.MODE_PRIVATE)
+        val writer = JsonWriter(OutputStreamWriter(file))
+        writer.setIndent("  ")
+        write(writer)
+        writer.close()
+    }
+
+    private fun write(writer: JsonWriter) {
+        writer.beginObject()
+        writer.name("query").value(searchQuery.text.toString())
+        writer.name("category").value(selectedCategory)
+        writer.name("sortBy").value(selectedSortBy)
+        writer.endObject()
     }
 }
