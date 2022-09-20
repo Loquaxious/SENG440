@@ -15,7 +15,7 @@ import java.util.*
 //
 // Step 8 - add TimePickerDialog
 //
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener {
     private val AlarmReceiver = AlarmReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         //
         // Step 7
         //
+        setReminderTime()
     }
 
     override fun onStart() {
@@ -55,19 +56,24 @@ class MainActivity : AppCompatActivity() {
     // Step 7
     //
     private fun setReminderTime() {
+        val fragment = TimePickerFragment()
+        fragment.listener = this
+        fragment.show(supportFragmentManager, null)
     }
 
-    //
-    // Step 8
-    //
-    //override fun onTimeSet(picker: TimePicker, hour: Int, minute: Int) {
-        //
-        // Step 11
-        //
 
-        //
-        // Step 13
-        //
+    override fun onTimeSet(picker: TimePicker, hour: Int, minute: Int) {
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        prefs.edit().apply {
+            putInt("hour", hour)
+            putInt("minute", minute)
+            apply()
+        }
 
-    //}
+        Utilities.scheduleReminder(applicationContext, hour, minute)
+        val receiver = ComponentName(this, BootReceiver::class.java)
+        packageManager.setComponentEnabledSetting(receiver, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP)
+
+    }
+
 }

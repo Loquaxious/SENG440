@@ -16,13 +16,20 @@ class AlarmReceiver : BroadcastReceiver() {
 
     @SuppressLint("ServiceCast")
     override fun onReceive(context: Context, intent: Intent) {
-        //
-        // Step 1
-        //
-        Log.d("FOO", "Received message ${intent.action} with\n${intent.extras?.toParamsString()}")
+        val intent: PendingIntent = Intent(context, PictureActivity::class.java).run {
+            PendingIntent.getActivity(context, 0, this, 0)
+        }
 
-        //
-        // Step 3 & 4 & 5
-        //
+        val notification = Notification.Builder(context, Notification.CATEGORY_REMINDER).run {
+            setSmallIcon(R.drawable.camera)
+            setContentTitle("A new day, a new memory")
+            setContentText("Just a friendly reminder to take today's picture.")
+            setContentIntent(intent)
+            setAutoCancel(true)
+            build()
+        }
+
+        val manager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.notify(0, notification)
     }
 }
