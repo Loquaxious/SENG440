@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/One Drive/OneDrive - University of Canterbury/Year 4/SENG440/Tutorials/Tut7/hideaway/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/One Drive/OneDrive - University of Canterbury/Year 4/SENG440/Tutorials/Tut7/hideaway/app/src/main/res/layout/message_view.xml" value="0.358695652173913" />
+        <entry key="app/src/main/res/drawable/placemark.xml" value="0.226" />
+        <entry key="app/src/main/res/drawable/unlock.xml" value="0.226" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28940217391304346" />
+        <entry key="app/src/main/res/layout/message_view.xml" value="0.28940217391304346" />
+        <entry key="app/src/main/res/menu/menu_actionbar.xml" value="0.41875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -10,7 +10,6 @@ class TimePickerFragment : DialogFragment() {
         return TimePickerDialog(activity, listener, 6, 0, false)
     }
 
-
     var listener: TimePickerDialog.OnTimeSetListener? = null
 }
 
